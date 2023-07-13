@@ -17,15 +17,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2">
-                        <button t-on-click="onClickTestSound">Test Sound</button>
-                    </td>
-                    <td rowspan="2">
-                        <button t-on-click="onClickGetTime">Get Time</button>
-                    </td>
-                    <td>
-                        <input lang="vi-VN" id="newTime" type="datetime-local" t-model="state.newTime"/>
-                    </td>
+                    <td rowspan="2"><button t-on-click="onClickTestSound">Test Sound</button></td>
+                    <td rowspan="2"><button t-on-click="onClickGetTime">Get Time</button></td>
+                    <td><input lang="vi-VN" id="newTime" type="datetime-local" t-model="state.newTime"/></td>
                 </tr>
                 <tr>
                     <td>

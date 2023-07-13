@@ -1,0 +1,98 @@
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/js/dashboard.js:0
+#: code:addons/erp_internal/static/src/js/dashboard.js:0
+#, python-format
+msgid "Cannot connect to machine!"
+msgstr "Không thể kết nối tới máy chấm công!"
+
+#. module: erp_internal
+#: model:ir.ui.menu,name:erp_internal.menu_erp_internal_configuration
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/xml/dashboard.xml:0
+#: model:ir.actions.client,name:erp_internal.action_erp_internal_dashboard
+#: model:ir.ui.menu,name:erp_internal.menu_erp_internal_dashboard
+#, python-format
+msgid "Dashboard"
+msgstr "Trang chủ"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/js/dashboard.js:0
+#, python-format
+msgid "Do you want to test sound ? The sound will play in ${machineName}"
+msgstr "Bạn có chắc là muốn test âm thanh ? Âm thanh sẽ được chạy ở trên ${machineName}"
+
+#. module: erp_internal
+#: model:ir.ui.menu,name:erp_internal.menu_erp_internal_root
+msgid "ERP Internal"
+msgstr "Nội bộ ERP"
+
+#. module: erp_internal
+#: model:ir.actions.act_window,name:erp_internal.x_machine_action
+#: model:ir.ui.menu,name:erp_internal.menu_erp_internal_x_machine_configuration
+#: model_terms:ir.ui.view,arch_db:erp_internal.x_machine_view_tree
+msgid "Finger Print Machine"
+msgstr "Máy chấm công"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Get Time"
+msgstr "Xem giờ trên máy"
+
+
+#. module: erp_internal
+#: model:ir.model.fields,field_description:erp_internal.field_x_machine__ip
+msgid "IP Address"
+msgstr "IP"
+
+#. module: erp_internal
+#: model:ir.model.fields,field_description:erp_internal.field_x_machine__name
+msgid "Name"
+msgstr "Tên"
+
+#. module: erp_internal
+#: model:ir.model.fields,field_description:erp_internal.field_x_machine__port
+msgid "Port"
+msgstr "Port"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Rollback"
+msgstr "Quay về thời gian đúng"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Set Time"
+msgstr "Đổi giờ"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/js/dashboard.js:0
+#, python-format
+msgid "Success!"
+msgstr "Thành công!"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Test Sound"
+msgstr "Test âm thanh"
+
+#. module: erp_internal
+#. odoo-javascript
+#: code:addons/erp_internal/static/src/js/dashboard.js:0
+#, python-format
+msgid "You have to select time to change!"
+msgstr "Bạn cần chọn giờ trước khi có thể đổi giờ trên máy"

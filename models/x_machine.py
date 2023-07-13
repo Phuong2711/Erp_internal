@@ -7,5 +7,5 @@ class XMachine(models.Model):
     _name = "x.machine"
 
     name = fields.Char("Name", required=True)
-    ip = fields.Char("IP Address")
+    ip = fields.Char("IP Address", reqyured=True)
     port = fields.Char("Port")

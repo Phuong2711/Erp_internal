@@ -5,24 +5,53 @@ const { Component, useState, onWillStart, onWillUnmount } = owl;
 import rpc from 'web.rpc';
 import { debounce } from "@web/core/utils/timing";
 import ajax from 'web.ajax';
+import { _t } from 'web.core';
+
+const DEBOUNCE_RATE = 1;  // NOT Catch when user spam click, if you want to catch, change VALUE of DEBOUNCE_RATE (ms)
+const REFRESH_RATE = 500; // 500ms
+const DATETIME_OPTIONS = {
+    hour: '2-digit',
+    minute:'2-digit',
+    second:'2-digit',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hourCycle: 'h23'
+};
+const DATETIME_LOCALES = "vi-VN";
+
+
+    function newDateTime() {
+        return new Date().toLocaleTimeString(DATETIME_LOCALES, DATETIME_OPTIONS)
+    }
+
+    function validateIsSuccess(isSuccess) {
+        let notification = isSuccess ? _t("Success!"): _t("Cannot connect to machine!");
+        alert(notification);
+    }
 
 export default class XChangeTimeDashboard extends Component {
     setup() {
         super.setup();
         this.state = useState({
             machines: [],
-            currentTime: new Date().toLocaleTimeString("vi-VN", {hour: '2-digit', minute:'2-digit', second:'2-digit', day: '2-digit', month: '2-digit', year: 'numeric', hourCycle: 'h23'}),
-        })
-        this.clock_start = setInterval(this.start_clock.bind(this), 500);
+            currentTime: newDateTime(),
+        });
+        this.start_clock();
 
         onWillStart(async () => {
-            return Promise.all([this._fetch_machine_data()])
+            return Promise.all([this._fetch_machine_data()]);
         });
-        onWillUnmount(()=>{clearInterval(this.clock_start)});
+
+        onWillUnmount(()=>{
+            clearInterval(this.clock_start);
+        });
     }
 
     start_clock () {
-        this.state.currentTime = new Date().toLocaleTimeString("vi-VN", {hour: '2-digit', minute:'2-digit', second:'2-digit', day: '2-digit', month: '2-digit', year: 'numeric', hourCycle: 'h23'})
+        this.clock_start = setInterval(()=> {
+            this.state.currentTime = newDateTime();
+        }, REFRESH_RATE)
     }
 
     async _fetch_machine_data() {
@@ -35,13 +64,16 @@ export default class XChangeTimeDashboard extends Component {
     }
 
     onClickTestSound = debounce (async ()=> {
+        const selectedMachine = document.getElementById("machines");
+        const machineName = selectedMachine.options[selectedMachine.selectedIndex].text;
+        let userChoice = await confirm(_t(`Do you want to test sound ? The sound will play in ${machineName}`));
+        if(!userChoice)return ;
         const machineIp = document.getElementById("machines").value;
         let isSuccess = await ajax.jsonRpc('/erp_internal/test_voice', 'call', {
            ip: machineIp
         });
-        let notification = isSuccess ? "Test voice successfully!": "Cannot connect to machine !";
-        alert(notification);
-    }, 500);
+        validateIsSuccess(isSuccess);
+    }, DEBOUNCE_RATE);
 
     onClickGetTime = debounce(async () =>{
         const selectedMachine = document.getElementById("machines");
@@ -50,23 +82,22 @@ export default class XChangeTimeDashboard extends Component {
            ip: selectedMachine.value
         });
 
-        let notification = machineTime ? `${machineName}: ${machineTime}` : "Cannot connect to machine !";
+        let notification = machineTime ? `${machineName}: ${machineTime}` : _t("Cannot connect to machine!");
         alert(notification);
-    }, 500)
+    }, DEBOUNCE_RATE);
 
     onClickSetTime = debounce(async () =>{
         const selectedMachine = document.getElementById("machines");
         const newTime = document.getElementById("newTime").value;
         if (!newTime) {
-            return alert("You have to select time to change!")
+            return alert(_t("You have to select time to change!"));
         }
         const isSuccess = await ajax.jsonRpc('/erp_internal/set_time', 'call', {
            ip: selectedMachine.value,
            newTime: newTime
         });
-        let notification = isSuccess ? `Time changed !`: "Cannot connect to machine !";
-        alert(notification);
-    }, 500)
+        validateIsSuccess(isSuccess);
+    }, DEBOUNCE_RATE);
 
     onClickRollback = debounce(async () =>{
         const selectedMachine = document.getElementById("machines");
@@ -74,9 +105,8 @@ export default class XChangeTimeDashboard extends Component {
            ip: selectedMachine.value,
            newTime: this.state.currentTime
         });
-        let notification = isSuccess ? `Time changed !`: "Cannot connect to machine !";
-        alert(notification);
-    }, 500)
+        validateIsSuccess(isSuccess);
+    }, DEBOUNCE_RATE);
 
 }
 
