@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="x_machine_view_tree" model="ir.ui.view">
+            <field name="name">x_machine_view_tree</field>
+            <field name="model">x.machine</field>
+            <field name="arch" type="xml">
+                <tree string="Finger Print Machine" editable="bottom">
+                    <field name="name"/>
+                    <field name="ip"/>
+                    <field name="port"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="x_machine_action" model="ir.actions.act_window">
+            <field name="name">Finger Print Machine</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">x.machine</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

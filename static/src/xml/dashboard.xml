@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="erp_internal.dashboard" owl="1">
+        <div class="ei_dashboard_container">
+            <h1>Dashboard</h1>
+            <h3><t t-esc="state.currentTime"/></h3>
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <select id="machines" name="machine" >
+                            <t t-foreach="state.machines" t-as="machine" t-key="machine.id">
+                                <option t-att-value="machine.ip">
+                                    <t t-out="machine.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        <button t-on-click="onClickTestSound">Test Sound</button>
+                    </td>
+                    <td rowspan="2">
+                        <button t-on-click="onClickGetTime">Get Time</button>
+                    </td>
+                    <td>
+                        <input lang="vi-VN" id="newTime" type="datetime-local" t-model="state.newTime"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button t-on-click="onClickSetTime">Set Time</button>
+                        <button t-on-click="onClickRollback">Rollback</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_erp_internal_root" name="ERP Internal" sequence="0"
+        web_icon="erp_internal,static/description/icon.png">
+            <menuitem id="menu_erp_internal_dashboard" name="Dashboard" action="action_erp_internal_dashboard" sequence="0"/>
+            <menuitem id="menu_erp_internal_configuration" name="Configuration" sequence="100">
+                <menuitem id="menu_erp_internal_x_machine_configuration"
+                          name="Finger Print Machine"
+                          action="erp_internal.x_machine_action"
+                          sequence="10"/>
+            </menuitem>
+        </menuitem>
+    </data>
+</odoo>

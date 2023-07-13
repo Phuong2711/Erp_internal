@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="1st_floor_machine" model='x.machine'>
+            <field name="name">Máy tầng 1</field>
+            <field name="ip">10.10.10.48</field>
+            <field name="port">4370</field>
+        </record>
+        <record id="3rd_floor_machine" model='x.machine'>
+            <field name="name">Máy tầng 3</field>
+            <field name="ip">10.10.30.106</field>
+            <field name="port">4370</field>
+        </record>
+        <record id="4th_floor_machine" model='x.machine'>
+            <field name="name">Máy tầng 4</field>
+            <field name="ip">10.10.40.104</field>
+            <field name="port">4370</field>
+        </record>
+        <record id="5th_floor_machine" model='x.machine'>
+            <field name="name">Máy tầng 5</field>
+            <field name="ip">10.10.50.184</field>
+            <field name="port">4370</field>
+        </record>
+        <record id="7th_floor_machine" model='x.machine'>
+            <field name="name">Máy tầng 7</field>
+            <field name="ip">10.10.70.105</field>
+            <field name="port">4370</field>
+        </record>
+    </data>
+</odoo>
