@@ -8,7 +8,7 @@
                 <tr>
                     <td colspan="3">
                         <select id="machines" name="machine" >
-                            <t t-foreach="state.machines" t-as="machine" t-key="machine.id">
+                            <t t-foreach="machines" t-as="machine" t-key="machine.id">
                                 <option t-att-value="machine.ip">
                                     <t t-out="machine.name"/>
                                 </option>

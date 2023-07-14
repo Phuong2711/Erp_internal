@@ -9,20 +9,9 @@ import { _t } from 'web.core';
 
 const DEBOUNCE_RATE = 1;  // NOT Catch when user spam click, if you want to catch, change VALUE of DEBOUNCE_RATE (ms)
 const REFRESH_RATE = 500; // 500ms
-const DATETIME_OPTIONS = {
-    hour: '2-digit',
-    minute:'2-digit',
-    second:'2-digit',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hourCycle: 'h23'
-};
-const DATETIME_LOCALES = "vi-VN";
-
 
     function newDateTime() {
-        return new Date().toLocaleTimeString(DATETIME_LOCALES, DATETIME_OPTIONS)
+        return moment(new Date()).format("HH:mm:ss DD/MM/YYYY");
     }
 
     function validateIsSuccess(isSuccess) {
@@ -34,7 +23,6 @@ export default class XChangeTimeDashboard extends Component {
     setup() {
         super.setup();
         this.state = useState({
-            machines: [],
             currentTime: newDateTime(),
         });
         this.start_clock();
@@ -60,7 +48,7 @@ export default class XChangeTimeDashboard extends Component {
             method: "search_read",
             fields: ['name', 'ip', 'port']
         });
-        this.state.machines = machines;
+        this.machines = machines;
     }
 
     onClickTestSound = debounce (async ()=> {
